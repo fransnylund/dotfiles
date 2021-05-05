@@ -1,0 +1,51 @@
+Config { font = "xft:Font Awesome 5 Free Solid:style=solid:size=11, Liberation Sans:size=11:bold:antialias=true"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "white"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Weather "EFTU" ["-t","<station>: <tempC>C",
+                                          "-L","18","-H","25",
+                                          "--normal","#fba0e3",
+                                          "--high","#fba0e3",
+                                          "--low","#fba0e3"] 36000
+ 		    , Run StdinReader
+                    , Run Network "wlo1" ["-L","0","-H","32",
+                                          "--normal","#00b7eb","--high","#00b7eb"] 10
+                    , Run Network "eth1" ["-L","0","-H","32",
+                                          "--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red"] 10
+                    , Run Memory ["-t"," Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %H:%M" "date" 10
+		    , Run Battery [
+			"-t", "<acstatus>: <left>%",
+			"--",
+			--"-c", "charge_full",
+			"-O", "Charging",
+			"-o", "Discharging",
+			"-h", "green",
+			"-l", "red" ] 50
+		     , Run DiskU [("/", "Disk: <used>/<size>"), ("sdb1", "<usedbar>")]
+         	        ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+		   ]
+
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<fc=ff0000> %StdinReader%</fc>  |  <fc=#00b7eb> %wlo1%</fc>  |  <fc=#ffa500>  %disku% </fc>  |  <fc=#ff0000> %memory%</fc>  |  <fc=#fba0e3> %EFTU%</fc> }\
+                    \{<fc=#ffff00> %battery%</fc>   |   <fc=#39ff14>%uname%</fc>   |   <fc=#ba55d3> %date%</fc>"
+
+       }

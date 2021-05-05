@@ -1,0 +1,12 @@
+xterm*Background: black
+xterm*Foreground: white
+
+xterm*faceName: Monospace:size=14
+xterm*saveLines: 10000
+
+xterm*vt100.translations: #override \n\
+ Ctrl <Key>-: smaller-vt-font() \n\
+ Ctrl <Key>+: larger-vt-font() \n\
+ Ctrl <Key>0: set-vt-font(d) \n\
+ Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+ Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
