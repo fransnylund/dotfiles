@@ -13,6 +13,7 @@ import System.Exit
 
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.DynamicLog
+import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -62,14 +63,20 @@ myFocusedBorderColor = "#ff0000"
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    -- launch a terminal
-    [ ((modm              , xK_Return), spawn $ XMonad.terminal conf)
+    [
+      -- Sound volume keys
+      ((0, xF86XK_AudioLowerVolume), spawn $ "amixer -q set Master 5%-")
+    , ((0, xF86XK_AudioRaiseVolume), spawn $ "amixer -q set Master 5%+")
+	
+      -- Brightness key
+    , ((0		  , xK_F1), spawn $ "echo 4000 > /sys/class/backlight/intel_backlight/brightness")
+    , ((0	   	  , xK_F2), spawn $ "echo 6000 > /sys/class/backlight/intel_backlight/brightness")
+    , ((0		  , xK_F3), spawn $ "echo 8000 > /sys/class/backlight/intel_backlight/brightness")
+
+    , ((modm              , xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
-
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm              , xK_q     ), kill)
@@ -129,13 +136,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
    -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_c     ), spawn "xmonad --recompile; xmonad --restart")
-
-    -- Run xmessage with a summary of the default keybindings (useful for beginners)
-    , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
-    ]
+    , ((modm              , xK_c     ), spawn "xmonad --recompile; xmonad --restart")]
     ++
-
     --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
@@ -253,7 +255,7 @@ myStartupHook = do
 myBar = "xmobar"
 
 
-myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "|" "|" }
+myPP = xmobarPP { ppCurrent = xmobarColor "#00ff00" "" . wrap "|" "|" }
 
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
