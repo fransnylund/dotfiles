@@ -68,7 +68,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ((0, xF86XK_AudioLowerVolume), spawn $ "amixer -q set Master 5%-")
     , ((0, xF86XK_AudioRaiseVolume), spawn $ "amixer -q set Master 5%+")
 	
-      -- Brightness key
+      -- Brightness keys
     , ((0		  , xK_F1), spawn $ "echo 4000 > /sys/class/backlight/intel_backlight/brightness")
     , ((0	   	  , xK_F2), spawn $ "echo 6000 > /sys/class/backlight/intel_backlight/brightness")
     , ((0		  , xK_F3), spawn $ "echo 8000 > /sys/class/backlight/intel_backlight/brightness")
