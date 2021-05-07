@@ -41,7 +41,7 @@ Config { font = "xft:Font Awesome 5 Free Solid:style=solid:size=11, Liberation S
 			"-l", "red" ] 50
 		     , Run DiskU [("/", "Disk: <free> free"), ("sdb1", "<usedbar>")]
          	        ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
-             , Run Com "/home/toad/getvolume.sh" [] "volume" 10
+             , Run Com "/home/toad/scripts/getvolume.sh" [] "volume" 5
 		   ]
 
        , sepChar = "%"
