@@ -9,7 +9,7 @@ Config { font = "xft:Font Awesome 5 Free Solid:style=solid:size=11, Liberation S
        , textOffset = -1
        , iconOffset = -1
        , lowerOnStart = True
-       , pickBroadest = False
+       , pickBroadest = True
        , persistent = True
        , hideOnStart = False
        , iconRoot = "."
@@ -39,13 +39,13 @@ Config { font = "xft:Font Awesome 5 Free Solid:style=solid:size=11, Liberation S
 			"-o", "Discharging",
 			"-h", "green",
 			"-l", "red" ] 50
-		     , Run DiskU [("/", "Disk: <used>/<size>"), ("sdb1", "<usedbar>")]
+		     , Run DiskU [("/", "Disk: <free> free"), ("sdb1", "<usedbar>")]
          	        ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+             , Run Com "/home/toad/getvolume.sh" [] "volume" 10
 		   ]
 
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=ff0000> %StdinReader%</fc>  |  <fc=#00b7eb> %wlo1%</fc>  |  <fc=#ffa500>  %disku% </fc>  |  <fc=#ff0000> %memory%</fc>  |  <fc=#fba0e3> %EFTU%</fc> }\
-                    \{<fc=#ffff00> %battery%</fc>   |   <fc=#39ff14>%uname%</fc>   |   <fc=#ba55d3> %date%</fc>"
+       , template = "<fc=ff0000> %StdinReader%</fc>  |  <fc=#ffa500>  %disku% </fc>  |  <fc=#ff0000> %memory%</fc>  |  <fc=#fba0e3> %EFTU%</fc>}<fc=#bebebe>%uname%</fc>{<fc=#ffff00> %battery%</fc>   |  <fc=#00ff00> Vol: %volume%</fc>  |   <fc=#00b7eb> %wlo1% </fc>   |   <fc=#ba55d3> %date%</fc>"
 
        }
