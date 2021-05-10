@@ -1,3 +1,5 @@
+!! Xterm
+
 xterm*Background: black
 xterm*Foreground: white
 
@@ -10,3 +12,76 @@ xterm*vt100.translations: #override \n\
  Ctrl <Key>0: set-vt-font(d) \n\
  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+
+
+!! Urxvt
+
+!! Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font
+
+URxvt*termName: xterm-256color
+URxvt*saveline: 10000
+URxvt*utf8: 2
+URxvt*iso14755: false
+URxvt*iso14755_52: false
+
+URxvt*depth: 32
+URxvt*shading: 30
+URxvt*transparent: true
+URxvt*background: [70]#921667
+URxvt*foreground: white
+
+!!!URxvt*underlineColor: #4682B4
+!!URxvt*highlightColor: #4682B4
+!!URxvt*throughColor: #Blue
+URxvt*cursorColor: color5
+URxvt*scrollBar: false
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0
+
+URxvt*font: xft:Monospace:regular:size=14
+URxvt*imFont: xft:Monospace:regular:size=14
+URxvt*boldFont: xft:Monospace:bold:size=14
+URxvt*italicFont: xft:Monospace:italic:size=14
+URxvt*boldItalicFont: xft:Monospace:regular:size=14
+URxvt*letterSpace: -1
+
+!! Colors
+
+!!URxvt*color0: black
+!!URxvt*color1: red3
+!!URxvt*color2: green3
+!!URxvt*color3: yellow3
+!!URxvt*color4: blue2
+!!URxvt*color5: magneta3
+!!URxvt*color6: cyan3
+!!URxvt*color7: gray90
+!!URxvt*color8: grey50
+!!URxvt*color9: red
+!!URxvt*color10: green
+!!URxvt*color11: yellow
+!!URxvt*color12: blue
+!!URxvt*color13: magneta
+!!URxvt*color14: cyan
+!!URxvt*color15: white
+
+
+!! Copy and Paste (Requires the urxvt-perls package)
+
+URxvt*keysym.Control-Shift-C: perl:clipboard:copy
+URxvt*keysym.Control-Shift-V: perl:clipboard:paste
+
+!! Perl stuff
+
+URxvt.keysym.C-Down: resize-font:smaller
+URxvt.keysym.C-Up: resize-font:bigger
+
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: brave
+URxvt.url-select.underline: true
+
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
