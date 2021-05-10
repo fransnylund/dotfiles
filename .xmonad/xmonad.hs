@@ -14,6 +14,10 @@ import System.Exit
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.DynamicLog
 import Graphics.X11.ExtraTypes.XF86
+import XMonad.Layout.Spacing
+import XMonad.Layout.Gaps
+import XMonad.Actions.NoBorders
+
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -21,7 +25,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "xterm"
+myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -33,7 +37,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -56,7 +60,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#00ff00"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -88,7 +92,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
+    --, ((modm,               xK_n     ), refresh)
 
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
@@ -130,7 +134,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    --, ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm			  , xK_n	 ), withFocused  toggleBorder)
 
     -- Quit xmonad
    -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -186,10 +191,11 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+-- ||| Mirror tiled
+myLayout = tiled ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled = gaps[(U,15),(R,15),(L,15),(D,15)] $ spacing 10 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
