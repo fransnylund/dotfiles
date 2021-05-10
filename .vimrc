@@ -2,6 +2,7 @@ let mapleader = " "
 
 syntax on
 filetype plugin indent on
+set background=dark
 
 imap jj <Esc> 
 map <leader>o :setlocal spell! spelllang=es_us<CR>
