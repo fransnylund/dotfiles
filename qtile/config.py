@@ -81,9 +81,28 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "p", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
+
+    # Sound keys
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
 ]
 
+
 groups = [Group(i) for i in "123456789"]
+
+#groups = []
+
+#group_names = ["1", "2", "3", "4", "5",]
+#group_labels = ["", "", "", "", "",]
+#group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
+
+#for i in range(len(group_names)):
+#    groups.append(
+#            Group(
+#                name=group_names[i],
+#                layout=group_layouts[i].lower(),
+#                label=group_labels[i],
+#            ))
 
 for i in groups:
     keys.extend([
@@ -102,7 +121,6 @@ for i in groups:
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
-    layout.Max(),
     #layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -110,6 +128,7 @@ layouts = [
     # layout.Matrix(),
     layout.MonadTall(border_normal = "#343434",
                      margin = 5),
+    layout.Max(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -119,10 +138,13 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Liberation Mono Bold',
+    font='Noto Sans Bold',
+    #font='Noto Serif Bold',
     fontsize=14,
-    padding=2,
+    padding=3,
     background="#343434"
+    #background="#414733"
+    #background="#000000"
 )
 extension_defaults = widget_defaults.copy()
 
@@ -132,14 +154,14 @@ screens = [
             [
                # widget.CurrentLayout(),
                 widget.GroupBox(
-                        fontsize = 12,
+                        fontsize = 13,
                         margin_y = 3,
                         margin_x = 0,
-                        active = "#FFFFFF",
+                        active = "#FFFF00",
                         highlight_method = "block",
-                        #this_current_screen_border = "#FF8B04",
+                       #this_current_screen_border = "#343434",
                         this_current_screen_border = "#FF00FF",
-                        inactive = "#FFFFFF",
+                        inactive = "#00FF00",
                         highlight_color = "#000000",
                         borderwidth = 6,
                         padding_y = 10,
@@ -147,20 +169,21 @@ screens = [
                         padding_x = 10,
                         #foreground = "#ffffff",
                         background = "#343434"),
-                #widget.Prompt(),
+                widget.Prompt(), 
                 widget.TextBox(text = "  ",
-                               foreground = "#00FF00"),
-                widget.WindowName(foreground = "#00FF00"),
-                widget.TextBox(text=" Vol:",
+                               foreground = "#FF00FF"),
+                widget.WindowName(max_chars = 50,
+                               foreground = "#FF00FF"),
+                widget.TextBox(text=" ",
                                foreground = "#FFFF00"),
-                widget.Volume(foreground = "#FFFF00"),
+                widget.Volume(foreground = "#FFFF00"
+                            ),
                 widget.TextBox(text = " | "),
-                widget.TextBox(text = " Mem:",
+                widget.TextBox(text = " ",
                                foreground = "#FF0000"),
-                widget.Memory(foreground = "#FF0000"),
+                widget.Memory(foreground = "#FF0000",
+                              ),
                 widget.TextBox(text = " | "),
-               # widget.CPU(),
-                widget.DF(),
                 widget.Chord(
                     chords_colors={
                         #'launch': ("#ff0000", "#ffffff"),
@@ -172,12 +195,12 @@ screens = [
                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                # widget.Systray(),
                 widget.Net(interface="eno1",
-                           format = ' Down/Up: {down} {up}',
+                           format = ' {down} {up}',
                            foreground = "#1BBBFF"),
                 widget.TextBox(text = " | "),
-                widget.TextBox(text = " Cal:",
+                widget.TextBox(text = "",
                                foreground = "#FF00FF"),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p',
+                widget.Clock(format='%d-%m-%Y %a %I:%M %p',
                              foreground = "#FF00FF"),
                # widget.QuickExit(),
             ],
