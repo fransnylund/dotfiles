@@ -10,6 +10,7 @@ uname -r
 alias updateall='sudo pacman -Syu'
 alias ls='ls --color=auto'
 alias v='vim'
+alias vcfg="vim ~/.vimrc"
 LS_COLORS=$LS_COLORS:'di=0;35:'
 export LS_COLORS
 

@@ -12,7 +12,6 @@ syntax on
 filetype plugin indent on
 set background=dark
 
-imap jj <Esc> 
 map <leader>s :set spell!<CR>
 map <leader>c :!pdflatex %<CR><CR>
 inoremap <C-s> <Esc>:w<CR>
