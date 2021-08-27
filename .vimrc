@@ -1,5 +1,7 @@
 let mapleader = " "
 
+
+" Plugins
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
@@ -10,13 +12,18 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
-set background=dark
 
+
+" Mappings
 map <leader>s :set spell!<CR>
 map <leader>c :!pdflatex %<CR><CR>
 inoremap <C-s> <Esc>:w<CR>
 map <C-s> :w<CR>
 
+
+" Set
+set nocompatible
+set background=dark
 set clipboard=unnamedplus
 set number relativenumber
 set tabstop=4 softtabstop=4
