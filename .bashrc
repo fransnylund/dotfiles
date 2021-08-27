@@ -10,6 +10,7 @@ set -o notify		# Notify when bg proc ends
 
 shopt -s autocd
 shopt -s cdspell
+bind "set completion-ignore-case on"
 
 
 ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
@@ -21,8 +22,10 @@ ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
 # Exports
 LS_COLORS=$LS_COLORS:'di=0;35:'
 export LS_COLORS
+export BROWSER='/usr/bin/brave'
 export EDITOR='/usr/bin/vim'
-export PAGER='less'
+export VISUAL='/usr/bin/vim'
+export PAGER='/usr/bin/less'
 export PATH=$PATH:~/scripts/
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
@@ -31,7 +34,7 @@ export HISTCONTROL=ignoreboth:erasedups
 
 # Aliases
 alias updateall='sudo pacman -Syu'
-alias update-grub='grub-mkconfig -o /boot/grub/grub.cfg'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='ls --color=auto'
 alias v='vim'
 alias vcfg='vim ~/.vimrc'
