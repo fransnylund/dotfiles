@@ -1,6 +1,6 @@
 #
 # Franslund .zshrc
-#
+# 
 
 
 # If not running interactively, don't do anything
@@ -17,6 +17,8 @@ set -o vi			# Vi mode
 set -o noclobber	# Don't overwrite
 set -o notify		# Notify when bg proc ends
 
+# Enable substitution in prompt
+setopt PROMPT_SUBST
 
 ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
 
@@ -48,12 +50,23 @@ alias grep='grep --color=auto'
 alias r='ranger'
 alias zzz='systemctl suspend'
 
+
 # Prompt before overwriting
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 
 
-PS1='%F{green}[%F{red}%n%F{green}@%F{yellow}%m%F{green}]%F{green}:%B%F{white}~%b%f $ '
+
+# Add the exit code to the prompt if != 0 
+prompt() {
+  value=$?
+  [[ $value -ne 0 ]] && echo $value
+}
+
+
+# Prompt
+PS1='%B%F{green}[%F{red}%n%F{green}@%F{yellow}%m%F{green}]%F{green}:%F{red}$(prompt)%B%F{white}~%b%f $ '
+
 
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

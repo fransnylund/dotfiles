@@ -2,6 +2,11 @@
 # Franslund .bashrc
 #
 
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
 # Set bash options
 set -o vi			# Vi mode
 set -o noclobber	# Don't overwrite
@@ -14,9 +19,6 @@ bind "set completion-ignore-case on"
 
 
 ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
 
 # Exports
@@ -45,14 +47,23 @@ alias grep='grep --color=auto'
 alias r='ranger'
 alias zzz='systemctl suspend'
 
+
+
 # Prompt before overwriting
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 
 
+# Add the exit code to the prompt if != 0 
+prompt() {
+  value=$?
+  [[ $value -ne 0 ]] && echo $value
+}
+
+
 # Prompt
-PS1='\[\033[01;32m\]\[[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\[\033[00m\]\w\[\033[00m\]\$ '
+PS1='\[\033[01;32m\]\[[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
 
 
 neofetch
