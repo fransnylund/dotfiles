@@ -18,7 +18,7 @@ shopt -s cdspell
 bind "set completion-ignore-case on"
 
 
-ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
+ulimit -u 3000		# Protect against fork bombs by limiting max user procs to 3000
 
 
 # Exports

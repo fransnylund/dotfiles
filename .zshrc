@@ -7,25 +7,24 @@
 [[ $- != *i* ]] && return
 
 
+# Load the functions and then call them
 autoload -Uz compinit promptinit colors && colors
 compinit
 promptinit
 
 
-# set options
-set -o vi			# Vi mode
-set -o noclobber	# Don't overwrite
-set -o notify		# Notify when bg proc ends
+# Emacs keys
+bindkey -e
+
 
 # Enable substitution in prompt
 setopt PROMPT_SUBST
 
-ulimit -u 5000		# Protect against fork bombs by limiting max user procs to 5000
+
+ulimit -u 3000		# Protect against fork bombs by limiting max user procs to 3000
 
 
 # Exports
-LS_COLORS=$LS_COLORS:'di=0;35:'
-export LS_COLORS
 export BROWSER='/usr/bin/brave'
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
