@@ -19,6 +19,7 @@ map <leader>s :set spell!<CR>
 map <leader>c :!pdflatex %<CR><CR>
 inoremap <C-s> <Esc>:w<CR>
 map <C-s> :w<CR>
+map <leader>! :.!
 
 
 " Set

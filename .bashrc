@@ -13,8 +13,9 @@ set -o noclobber	# Don't overwrite
 set -o notify		# Notify when bg proc ends
 
 
-shopt -s autocd
-shopt -s cdspell
+shopt -s autocd     # Too lazy to type cd
+shopt -s cdspell    # Correct spelling
+shopt -s globstar   # Recursive *
 bind "set completion-ignore-case on"
 
 
@@ -22,8 +23,7 @@ ulimit -u 3000		# Protect against fork bombs by limiting max user procs to 3000
 
 
 # Exports
-LS_COLORS=$LS_COLORS:'di=0;35:'
-export LS_COLORS
+export LS_COLORS=$LS_COLORS:'di=0;35:'
 export BROWSER='/usr/bin/brave'
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
@@ -32,6 +32,7 @@ export PATH=$PATH:~/scripts/
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth:erasedups
+export CDPATH="$HOME"
 
 
 # Aliases
