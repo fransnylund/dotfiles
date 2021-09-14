@@ -14,7 +14,7 @@ set -o notify		# Notify when bg proc ends
 
 
 shopt -s autocd     # Too lazy to type cd
-shopt -s cdspell    # Correct spelling
+shopt -s cdspell    # Correct spelling mistakes
 shopt -s globstar   # Recursive *
 bind "set completion-ignore-case on"
 
@@ -33,6 +33,7 @@ export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth:erasedups
 export CDPATH="$HOME"
+export LANG='C'
 
 
 # Aliases
