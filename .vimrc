@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader = "-"
 
 
 " Plugins
@@ -17,8 +17,9 @@ filetype plugin indent on
 " Mappings
 map <leader>s :set spell!<CR>
 map <leader>c :!pdflatex %<CR><CR>
-inoremap <C-s> <Esc>:w<CR>
-map <C-s> :w<CR>
+inoremap <leader>s <Esc>:w<CR>
+map <leader>s :w<CR>
+map <leader>c :s,^,#,
 
 
 " Set

@@ -25,6 +25,7 @@ ulimit -u 3000		# Protect against fork bombs by limiting max user procs to 3000
 
 
 # Exports
+export TERM='xterm-256color'
 export BROWSER='/usr/bin/brave'
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'

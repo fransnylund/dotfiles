@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 

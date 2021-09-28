@@ -23,6 +23,7 @@ ulimit -u 3000		# Protect against fork bombs by limiting max user procs to 3000
 
 
 # Exports
+export TERM='xterm-256color'
 export LS_COLORS=$LS_COLORS:'di=0;35:'
 export BROWSER='/usr/bin/brave'
 export EDITOR='/usr/bin/vim'
@@ -32,7 +33,7 @@ export PATH=$PATH:~/scripts/
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth:erasedups
-export CDPATH="$HOME"
+export CDPATH="~"
 export LANG='C'
 
 
@@ -65,7 +66,7 @@ prompt() {
 
 
 # Prompt
-PS1='\[\033[01;32m\]\[[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
+PS1='\[\033[01;32m\][\[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
 
 
-neofetch
+#neofetch
