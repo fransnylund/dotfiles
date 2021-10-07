@@ -1,4 +1,4 @@
-let mapleader = "-"
+let mapleader = ","
 
 
 " Plugins
@@ -26,11 +26,20 @@ map <leader>c :s,^,#,
 set nocompatible
 set background=dark
 set clipboard=unnamedplus
+
+" Show relative and current line number
 set number relativenumber
+
+" Set where tab should stop
 set tabstop=4 softtabstop=4
 set incsearch
 set scrolloff=8
 set wildmode=longest,list,full
 set splitbelow splitright
+
+" Turn off the bell
 set noerrorbells
 set viminfo='20,<1000,s1000
+
+" Change how much >> shifts
+set shiftwidth=2
