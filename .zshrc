@@ -1,5 +1,5 @@
 #
-# Franslund .zshrc
+# Frans .zshrc
 # 
 
 

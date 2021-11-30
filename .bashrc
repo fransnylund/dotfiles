@@ -1,11 +1,10 @@
 #
-# Franslund .bashrc
+# Frans .bashrc
 #
 
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
 
 # Set bash options
 set -o vi			# Vi mode
@@ -33,8 +32,9 @@ export PATH=$PATH:~/scripts/
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth:erasedups
-export CDPATH="~"
+#export CDPATH="~"
 export LANG='C'
+
 
 
 # Aliases
@@ -49,7 +49,7 @@ alias dow='~/Downloads'
 alias grep='grep --color=auto'
 alias r='ranger'
 alias zzz='systemctl suspend'
-
+#alias sync='rsync -vrP --delete-after ~/website/ root@fransnylund.com:/var/www/fransnylund'
 
 
 # Prompt before overwriting
@@ -66,7 +66,7 @@ prompt() {
 
 
 # Prompt
-PS1='\[\033[01;32m\][\[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
+PS1='\[\033[01;32m\][\[\033[01;31m\]frans\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
 
 
 #neofetch
