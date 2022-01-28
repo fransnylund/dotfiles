@@ -2,6 +2,9 @@
 
 setxkbmap fi
 
+# Enable keypad as mouse
+# setxkbmap -option keypad:pointerkeys
+
 # Map escape to caps lock
 setxkbmap -option caps:escape
 
