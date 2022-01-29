@@ -63,6 +63,7 @@ alias zzz='systemctl suspend'
 alias irssi="irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias tmux='tmux -u'
+alias c='printf "\e[H\e[2J"'
 
 
 # Prompt before overwriting
@@ -75,8 +76,8 @@ alias rm='rm -i'
 pathprepend(){
 
   for i in "$@"; do
-    [[ ! -d "$i" ]] && exit 1
-    [[ "$i" =~ ^[^/] ]] && echo "Enter a full path" && return 1
+    [[ ! -d "$i" ]] && echo "Not a valid directory" >&2 && return 1
+    [[ "$i" =~ ^[^/] ]] && echo "Enter a full path" >&2 && return 1
     PATH=${PATH//:${i}:/:}
     PATH=${PATH/#${i}:/}
     PATH=${PATH/%:${i}/}
@@ -89,8 +90,8 @@ pathprepend(){
 pathappend(){
 
   for i in "$@"; do
-    [[ ! -d "$i" ]] && return 1
-    [[ "$i" =~ ^[^/] ]] && echo "Enter a full path" && return 1
+    [[ ! -d "$i" ]] && echo "Not a valid directory" >&2 && return 1
+    [[ "$i" =~ ^[^/] ]] && echo "Enter a full path" >&2 && return 1
     PATH=${PATH//:${i}:/:}
     PATH=${PATH/#${i}:/}
     PATH=${PATH/%:${i}/}
