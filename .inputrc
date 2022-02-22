@@ -1,7 +1,32 @@
+# GNU Readline config file
+
+
+# disable the bell
 set bell-style none
+
+# ~ expands to /home/user
+set expand-tilde on
+
+# make keeping track of parens easier
+set blink-matching-paren on
+
+# make tab completion nicer
+set colored-completion-prefix on
+
+
+$if mode=vi
+
+# show prompt in vi mode
 set show-mode-in-prompt on
+
+# insert mode
 set vi-ins-mode-string ""
+
+# command mode
 set vi-cmd-mode-string ":"
 
+
+# make Ctrl + L possible in vi mode
 C-l: clear-screen
 
+$endif
