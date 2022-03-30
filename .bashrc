@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 
 # Set bash options
-set -o vi			# Vi mode
+#set -o vi			# Vi mode
 set -o noclobber	# Don't overwrite
 set -o notify		# Notify when bg proc ends
 
@@ -74,9 +74,6 @@ pathappend(){
   done
 }
 
-greet(){
-  echo "hello mate!"
-}
 
 # Add the exit code to the prompt if != 0 
 prompt() {
