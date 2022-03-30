@@ -11,7 +11,3 @@
 (setq visual-bell t)
 
 (load-theme 'tango-dark)
-
-
-
-
