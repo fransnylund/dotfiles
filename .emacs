@@ -9,5 +9,7 @@
 (menu-bar-mode -1)
 
 (setq visual-bell t)
+(setq-default visible-bell t)
 
 (load-theme 'tango-dark)
+

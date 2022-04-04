@@ -2,13 +2,13 @@ let mapleader = ","
 
 
 " Plugins
-call plug#begin()
+"call plug#begin()
 
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/NERDTree'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'scrooloose/NERDTree'
+"Plug 'jiangmiao/auto-pairs'
 
-call plug#end()
+"call plug#end()
 
 syntax on
 filetype plugin indent on
