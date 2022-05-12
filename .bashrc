@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 
 # Set bash options
-#set -o vi			# Vi mode
+set -o vi			# Vi mode
 set -o noclobber	# Don't overwrite
 set -o notify		# Notify when bg proc ends
 
@@ -39,6 +39,7 @@ alias irssi="irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HO
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias tmux='tmux -u'
 alias c='printf "\e[H\e[2J"'
+alias emacs='vim'
 
 
 # Prompt before overwriting

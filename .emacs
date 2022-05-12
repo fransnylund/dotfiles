@@ -13,3 +13,4 @@
 
 (load-theme 'tango-dark)
 
+(setq-default c-basic-offset 4)
