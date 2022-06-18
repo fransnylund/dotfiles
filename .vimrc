@@ -18,16 +18,16 @@ let g:netrw_banner = 0
 
 
 " Mappings
-map <leader>s :set spell!<CR>
-map <leader>c :!pdflatex %<CR><CR>
-inoremap <leader>s <Esc>:w<CR>
-map <leader>s :w<CR>
-map <leader>c :s,^,#,
+map <leader>c :set spell!<CR>
+map <leader>C :!pdflatex %<CR><CR>
+inoremap <c-s> <Esc>:w<CR>
+map <c-s> :w<CR>
+map <leader># :s,^,#,
 inoremap <CR> <Esc>
 nnoremap <CR> <Esc>
 inoremap <BS> <Esc>
 nnoremap <BS> <Esc>
-
+map Q gq
 
 
 " Set
@@ -41,7 +41,7 @@ set number relativenumber
 " Set where tab should stop
 set tabstop=4 softtabstop=4
 set incsearch
-set hlsearch
+"set hlsearch
 set scrolloff=8
 set wildmode=longest,list,full
 set splitbelow splitright
@@ -56,3 +56,8 @@ set shiftwidth=4
 " Search recursively through the current dir when using find
 set path+=**
 
+" Remove the delay when pressing ESC 
+set ttimeoutlen=0
+
+" Define the width of that gq formats
+set textwidth=65

@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 
 # Set bash options
-set -o vi			# Vi mode
+#set -o vi			# Vi mode
 set -o noclobber	# Don't overwrite
 set -o notify		# Notify when bg proc ends
 
@@ -17,6 +17,7 @@ shopt -s autocd     # Too lazy to type cd
 shopt -s cdspell    # Correct spelling mistakes
 shopt -s extglob    # Extended globbing
 shopt -s globstar   # Recursive *
+shopt -s histverify # View history expansion before executing it
 bind "set completion-ignore-case on"
 
 
@@ -75,6 +76,11 @@ pathappend(){
   done
 }
 
+# Show git branch in prompt
+gitbranch(){
+	[[ -d ".git" ]] && branch=$(grep \* <(git branch))
+	echo ${branch#* }
+}
 
 # Add the exit code to the prompt if != 0 
 prompt() {
@@ -84,7 +90,7 @@ prompt() {
 
 
 # Prompt
-PS1='\[\033[01;32m\][\[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]:\[\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
+PS1='\[\033[01;32m\][\[\033[01;31m\]\u\[\033[01;32m\]@\[\033[01;33m\]\h\[\033[01;32m\]]\[\033[01;34m$(gitbranch)\[\033[01;32m:\[\033[01;31m\]$(prompt)\[\033[00m\]\w\[\033[00m\]\$ '
 
 
 #neofetch

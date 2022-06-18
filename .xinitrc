@@ -6,4 +6,4 @@
 [ -f ~/.xprofile  ] && . ~/.xprofile
 
 
-exec dwm
+exec startxfce4
